@@ -23,7 +23,11 @@
 		<input type="submit" value="Find Survivor">
 	</form>
 
-	{% if survivor is none %}
+	{% if error %}
+		<p style="color: red;">Error: {{ error }}</p>
+	{% endif %}
+
+	{% if survivor is not none %}
 		<h3>Survivor: {{ survivor }}</h3>
 		{% if steps %}
 			<h4>Steps Taken:</h4>
