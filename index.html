@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Josephus Problem</title>
+</head>
+<body>
+	<h1>Josephus Problem Solver</h1>
+
+	<form method="POST">
+		<label for="n">Number of people (n):</label>
+		<input type="number" id="n" name="n" required><br><br>
+
+		
+		<label for="k">Step Size (k):</label>
+		<input type="number" id="k" name="k" required><br><br>
+
+
+		<label for="step">Show Steps (0 for Yes, any other number for No):</label>
+		<input type="text" id="step" name="step" required><br><br>
+
+		<input type="submit" value="Find Survivor">
+	</form>
+
+	{% if survivor is none %}
+		<h3>Survivor: {{ survivor }}</h3>
+		{% if steps %}
+			<h4>Steps Taken:</h4>
+			<ul>
+				{% for step in steps %}
+					<li>{{ step}}</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+	{% endif %}
+</body>
+</html>
+	
