@@ -56,14 +56,19 @@ def josephus(n, k, step):
 
 @app.route('/', methods=['GET', 'POST'])
 def inputs():
+    survivor = None
+    steps = None
+    
     if request.method == 'POST':
-        n = int(request.form['n'])
-        k = int(request.form['k'])
-        step = request.form['step']
+        try:
+            n = int(request.form['n'])
+            k = int(request.form['k'])
+            step = request.form['step']
 
-        survivor, steps = josephus(n, k, step)
+            survivor, steps = josephus(n, k, step)
 
-        return render_template('index.html', survivor=survivor, steps=steps)
+        except Exception as e:
+            return render_template('index.html', survivor=survivor, steps=steps)
 
     return render_template('index.html', survivor=None, steps=None)
 
